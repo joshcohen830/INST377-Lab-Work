@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    
+  }
+
+  /* Mobile Styles */
+    @media only screen and (max-width: 400px) {
+    body {
+      background-color: white;
+    }
+  }
+  
+  /* Tablet Styles */
+    @media only screen and (min-width: 401px) and (max-width: 960px) {
+    body {
+      background-color: white;
+    }
+  }
+  
+  /* Desktop Styles */
+    @media only screen and (min-width: 961px) {
+    body {
+      background-color: white;
+    }
+  }
+
+  .data-demo,
+  .back-main {
+    text-decoration: none;
+    color: #fff;
+  }
+ 
+  .name-lab-title {
+    display: flex;
+    background-color: rgba(0,139, 139,0.8);
+    padding: 10px 0;
+
+  }
+
+  .menu-container {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    background-color: #5995DA;  
+    padding: 20px 0;
+  }
+  
+  .menu {
+    border: 1px solid #fff; 
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .links {
+    border: 1px solid #fff;  
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .main-page {
+    margin-left: 20px;
+  }
+
+  .header-container {
+    color: #5995DA;
+    background-color: #D6E9FE;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header {
+    width: 900px;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .github-link {
+    text-decoration: none;
+    display: flex;
+    color: inherit;
+  }
+
+  .my-github,
+  .group-project {
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+
+
+  .photo-grid-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    
+  }
+  
+  .photo-grid {
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;  
+    align-items: center;
+  }
+  
+  .photo-grid-item {
+    border: 1px solid #fff;
+    width: 300px;
+    height: 300px;
+  }
+
+  .first-item {
+    order: 1;
+  }
+  
+  .last-item {
+    order: -1;
+  }
+
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer-item {
+    border: 1px solid #fff;
+    background-color: #D6E9FE;
+    height: 200px;
+    flex: 1;
+  }
+
+  .footer-one,
+  .footer-three {
+  background-color: #5995DA;
+  flex: initial;
+  width: 300px;
+}
+
+.carousel {
+    overflow: hidden;
+    max-width: 600px;
+    position: relative;
+}
+
+.carousel .carousel__item,
+.carousel .carousel__item--hidden {
+    display: none;
+}
+
+.carousel .carousel__item img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+.carousel .carousel__item--visible {
+    display: block;
+    animation: fadeVisibility 0.5s;
+}
+
+/* .carousel .carousel__actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 50%;
+    
+}
+
+.carousel .carousel__actions button {
+    
+    border-radius: 50px;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    width: 75px;
+    height: 40px;
+}
+
+.carousel .carousel__actions button#carousel__button--prev {
+    margin-left: -100px;
+
+}
+
+
+.carousel .carousel__actions button#carousel__button--next {
+    margin-right: -100px;
+    
+} */
+
+.photo-grid-container .carousel__actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 47.5%;
+    
+    
+}
+
+.photo-grid-container .carousel__actions button {
+    
+    border-radius: 7px;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    padding: 5px 10px 5px 10px;
+    border: 3px solid transparent;
+}
+
+.carousel__actions button:hover{
+    background-color: sandybrown;
+    border-color: seagreen;
+    
+}
+
+.photo-grid-container .carousel__actions button#carousel__button--prev {
+    margin-left: -70px;
+
+}
+
+
+.photo-grid-container .carousel__actions button#carousel__button--next {
+    margin-right: -70px;
+    
+}
+
+@keyframes fadeVisibility {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform:  opacity linear;
+    }
+}
