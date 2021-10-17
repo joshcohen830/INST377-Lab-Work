@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>JOSH COHEN LAB 7</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   <link rel='stylesheet' href='styles.css'/>
+
+
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+  </head>
+  <body>
+      <h1>Lab 7 Josh Cohen</h1>
+      
+    <div class='wrapper'>
+        <div class='container'>
+            <div class='columns' id='top-section'>
+                <div class='column'>
+                    <h3>Form</h3>
+                    <form>
+                        <label for ='zipcode'>Zip Code</label>
+                        <input type='text' name='zipcode' id='zipcode'/>
+                        <button type='submit'>Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class='columns' id='middle-section'>
+                <div class='column'>
+                    <span class='resto-name'></span><br/>
+                    <div class='append-box'></div>
+                </div>
+                <div class='column'>
+                    <div id='mapid'></div>
+                </div>
+            </div>
+
+            
+            <div class='columns' id='end-section'>
+                <div class='column'>
+                    <button class='button is-primary fetch'>Do a Fetch Request</button>
+                </div>
+                <div class='column'>
+                    <button class='button is-secondary'>Secondary</button>
+                </div>
+                <div class='column'>
+                    <button class='button is-secondary click_demo'>
+                        Change Spam Class
+                    </button>
+                </div>
+            </div>
+
+            <div id='demo_box' class='visible'>this is a demo span</div>
+        </div>
+    </div>
+   <script src='script.js'></script>
+  </body>
