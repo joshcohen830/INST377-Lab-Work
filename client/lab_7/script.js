@@ -50,7 +50,7 @@
 
 function toggleSpanVisibility(evt) {
   const button = evt.target;
-  const target = document.querySelector('#demo_box');
+  const target = document.querySelector('#clear');
   console.log(target.classList);
   if (target.classList.value.includes('visible')) {
     console.log('found item');
@@ -73,30 +73,32 @@ async function fetchRequest(url) {
   }
 }
 
-function filterFunction(event, data, list, mymap) {
-  list.innerHTML = '';
-  console.log(event.target.value);
-  const filteredList = data.filter((item, index) => {
-    const zipcode = event.target.value;
-    return item.zip === zipcode;
-  });
-  console.table(filteredList);
+// function filterFunction(event, data, list, mymap) {
+//   list.innerHTML = '';
+//   console.log(event.target.value);
+//   const filteredList = data.filter((item, index) => {
+//     const zipcode = event.target.value;
+//     return item.zip === zipcode;
+//   });
+//   console.table(filteredList);
 
-  const limitedList = filteredList.slice(0,5);
+//   const limitedList = filteredList.slice(0, 5);
 
-  limitedList.forEach((item, index) => {
-    const point = item.geocoded_column_1;
-    if (!point || !point.coordinates) { return; }
-    const latLong = point.coordinates;
-    const marker = latLong.reverse();
+//   limitedList.forEach((item, index) => {
+//     const point = item.geocoded_column_1;
+//     if (!point || !point.coordinates) { return; }
+//     const latLong = point.coordinates;
+//     const marker = latLong.reverse();
 
-    list.innerHTML += `<span class="resto-name">${item.name}</span><br>`;
-    console.log(marker);
-    L.marker(marker).addTo(mymap);
-  });
-}
+//     list.innerHTML += `<span class="resto-name box">${item.name}</span><br>
+//     <span class="resto-name">${item.address_line_1}</span><br>`;
+//     console.log(marker);
+//     L.marker(marker).addTo(mymap);
+//   });
+// }
 
 async function mainThread() {
+  let markers = [];
   console.log('loaded main script');
   const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
   const inputBox = document.querySelector('#zipcode');
@@ -113,8 +115,8 @@ async function mainThread() {
     accessToken: 'pk.eyJ1IjoiamNvaGVuNDMiLCJhIjoiY2t1dHprZWk5MXJkbzJvcGczb3VweXNqaCJ9.7W2odTXexHrjDFEatguIag'
   }).addTo(mymap);
 
-  const targetElement = document.querySelector('.click_demo');
-  targetElement.addEventListener('click', (event) => toggleSpanVisibility(event));
+  const targetElement = document.querySelector('#zipcode');
+  targetElement.addEventListener('input', (event) => toggleSpanVisibility(event));
 
   const data = await fetchRequest(url);
   console.log('external dataset', data);
@@ -124,22 +126,32 @@ async function mainThread() {
     visibleListOfFilteredItems.innerHTML = '';
     const filteredList = data.filter((item, index) => {
       const zipcode = event.target.value;
-      return item.zip === zipcode
+      return item.zip === zipcode;
     });
     console.table(filteredList);
-    const limitedList = filteredList.slice(0,5);
-    limitedList.forEach((item,index) => {
-      visibleListOfFilteredItems.innerHTML += `<span class="resto-name">${item.name}</span><br>`;
-      const latLong = item.geocoded_column_1;
+    const limitedList = filteredList.slice(0, 5);
+
+    console.log(markers);
+    markers.forEach((mark) => {
+      mark.remove();
+    });
+
+    limitedList.forEach((item, index) => {
+      console.log(markers);
+      const point = item.geocoded_column_1;
+      if (!point || !point.coordinates) { return; }
+      const latLong = point.coordinates;
+      const marker = latLong.reverse();
+
+      visibleListOfFilteredItems.innerHTML += `<span class="resto-name box result"><b>${item.name}</b> <br> <em>${item.address_line_1}</em></span>`;
+
       console.log(latLong);
 
-      const point = latLong.coordinates;
       console.log(point);
 
-      const reversePoint = point.reverse();
-      console.log(reversePoint);
+      console.log(marker);
 
-      L.marker(reversePoint).addTo(mymap);
+      markers.push(L.marker(marker).addTo(mymap));
     });
   });
 }
